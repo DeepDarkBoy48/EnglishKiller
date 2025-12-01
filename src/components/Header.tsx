@@ -1,16 +1,21 @@
 import React from 'react';
 import { Sparkles, Book, PenTool } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { ApiKeySettingsButton } from './ApiKeySettings';
 
 interface HeaderProps {
-  activeTab?: 'analyzer' | 'dictionary' | 'writing';
-  onNavigate?: (tab: 'analyzer' | 'dictionary' | 'writing') => void;
   hasApiKey: boolean;
   onApiKeyClick: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, hasApiKey, onApiKeyClick }) => {
+export const Header: React.FC<HeaderProps> = ({ hasApiKey, onApiKeyClick }) => {
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `px-3 md:px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
+      isActive
+        ? 'bg-white text-pink-600 shadow-sm'
+        : 'text-slate-500 hover:text-slate-700'
+    }`;
+
   return (
     <header className="bg-white border-b border-slate-100 sticky top-0 z-10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -22,45 +27,35 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, hasApiKey
           <span className="font-bold text-xl tracking-tight text-slate-800 md:hidden">SE</span>
         </Link>
 
-        {activeTab && onNavigate && (
-          <div className="flex items-center gap-2 md:gap-6">
-            <nav className="flex gap-1 p-1 bg-slate-100 rounded-xl">
-              <button
-                onClick={() => onNavigate('analyzer')}
-                className={`px-3 md:px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${activeTab === 'analyzer'
-                  ? 'bg-white text-pink-600 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-700'
-                  }`}
-              >
-                <Sparkles className="w-4 h-4 hidden sm:block" />
-                句法
-              </button>
-              <button
-                onClick={() => onNavigate('dictionary')}
-                className={`px-3 md:px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${activeTab === 'dictionary'
-                  ? 'bg-white text-pink-600 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-700'
-                  }`}
-              >
-                <Book className="w-4 h-4 hidden sm:block" />
-                词典
-              </button>
-              <button
-                onClick={() => onNavigate('writing')}
-                className={`px-3 md:px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${activeTab === 'writing'
-                  ? 'bg-white text-pink-600 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-700'
-                  }`}
-              >
-                <PenTool className="w-4 h-4 hidden sm:block" />
-                写作
-              </button>
-            </nav>
-          </div>
-        )}
+        <div className="flex items-center gap-2 md:gap-6">
+          <nav className="flex gap-1 p-1 bg-slate-100 rounded-xl">
+            <NavLink to="/analyzer" className={getLinkClass}>
+              <Sparkles className="w-4 h-4 hidden sm:block" />
+              句法
+            </NavLink>
+            <NavLink to="/dictionary" className={getLinkClass}>
+              <Book className="w-4 h-4 hidden sm:block" />
+              词典
+            </NavLink>
+            <NavLink to="/writing" className={getLinkClass}>
+              <PenTool className="w-4 h-4 hidden sm:block" />
+              写作
+            </NavLink>
+          </nav>
+        </div>
 
-        {/* API Key Settings Button */}
-        <ApiKeySettingsButton onClick={onApiKeyClick} hasApiKey={hasApiKey} />
+        <div className="flex items-center">
+            {/* Articles Link */}
+            <Link 
+            to="/articles" 
+            className="mr-2 md:mr-4 px-3 py-2 text-slate-600 hover:text-pink-600 font-medium transition-colors text-sm rounded-lg hover:bg-slate-50"
+            >
+            文章中心
+            </Link>
+
+            {/* API Key Settings Button */}
+            <ApiKeySettingsButton onClick={onApiKeyClick} hasApiKey={hasApiKey} />
+        </div>
       </div>
     </header>
   );

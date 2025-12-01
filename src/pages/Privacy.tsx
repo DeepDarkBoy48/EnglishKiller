@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Header } from '../components/Header';
 
 export const Privacy: React.FC = () => {
   return (
@@ -18,8 +17,6 @@ export const Privacy: React.FC = () => {
         <meta property="og:description" content="了解我们如何收集、使用和保护您的个人信息。" />
         <meta property="og:image" content="https://englishkiller.pages.dev/og-image.png" />
       </Helmet>
-
-      <Header hasApiKey={false} onApiKeyClick={() => {}} />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl text-slate-700">
         <h1 className="text-3xl font-bold text-slate-900 mb-8">隐私政策</h1>
