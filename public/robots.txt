@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smashenglish.pages.dev/sitemap.xml
