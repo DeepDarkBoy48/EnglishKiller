@@ -9,6 +9,14 @@ export const Privacy: React.FC = () => {
         <title>隐私政策 - SmashEnglish</title>
         <meta name="description" content="SmashEnglish 的隐私政策。了解我们如何收集、使用和保护您的个人信息。" />
         <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://englishkiller.pages.dev/privacy" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://englishkiller.pages.dev/privacy" />
+        <meta property="og:title" content="隐私政策 - SmashEnglish" />
+        <meta property="og:description" content="了解我们如何收集、使用和保护您的个人信息。" />
+        <meta property="og:image" content="https://englishkiller.pages.dev/og-image.png" />
       </Helmet>
 
       <Header hasApiKey={false} onApiKeyClick={() => {}} />

@@ -9,6 +9,14 @@ export const Terms: React.FC = () => {
         <title>服务条款 - SmashEnglish</title>
         <meta name="description" content="SmashEnglish 的服务条款。使用本服务即表示您同意遵守这些条款。" />
         <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://englishkiller.pages.dev/terms" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://englishkiller.pages.dev/terms" />
+        <meta property="og:title" content="服务条款 - SmashEnglish" />
+        <meta property="og:description" content="使用本服务即表示您同意遵守这些条款。" />
+        <meta property="og:image" content="https://englishkiller.pages.dev/og-image.png" />
       </Helmet>
 
       <Header hasApiKey={false} onApiKeyClick={() => {}} />

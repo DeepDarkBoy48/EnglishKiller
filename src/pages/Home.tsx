@@ -111,7 +111,41 @@ export const Home: React.FC = () => {
       <Helmet>
         <title>SmashEnglish - AI 英语学习助手 | 句法分析 | 智能词典 | 写作润色</title>
         <meta name="description" content="SmashEnglish 是一款 AI 驱动的英语学习工具，提供智能句法分析、深度词典查询和写作润色功能，帮助您更高效地掌握英语。" />
-        <meta name="keywords" content="英语学习, AI英语, 句法分析, 英语语法, 智能词典, 英语写作, 润色工具" />
+        <meta name="keywords" content="英语学习, AI英语, 句法分析, 英语语法, 智能词典, 英语写作, 润色工具, 英语句子分析, 语法检查, AI写作助手" />
+        <link rel="canonical" href="https://englishkiller.pages.dev/" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://englishkiller.pages.dev/" />
+        <meta property="og:title" content="SmashEnglish - AI 英语学习助手" />
+        <meta property="og:description" content="AI 驱动的英语学习工具，一键分析句子结构，智能润色写作。" />
+        <meta property="og:image" content="https://englishkiller.pages.dev/og-image.png" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://englishkiller.pages.dev/" />
+        <meta property="twitter:title" content="SmashEnglish - AI 英语学习助手" />
+        <meta property="twitter:description" content="AI 驱动的英语学习工具，一键分析句子结构，智能润色写作。" />
+        <meta property="twitter:image" content="https://englishkiller.pages.dev/og-image.png" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "SmashEnglish",
+              "applicationCategory": "EducationalApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "description": "AI 驱动的英语学习工具，提供智能句法分析、深度词典查询和写作润色功能。"
+            }
+          `}
+        </script>
       </Helmet>
 
       <Header
