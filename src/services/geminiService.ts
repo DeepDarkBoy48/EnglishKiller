@@ -388,15 +388,23 @@ export const getChatResponseService = async (
   `;
 
   const model = client.getGenerativeModel({
-    model: 'gemini-2.5-flash-lite',
+    model: 'gemini-2.5-flash',
     systemInstruction: systemInstruction,
   });
 
   // Build chat history
-  const chatHistory = history.map(msg => ({
+  const fullHistory = history.map(msg => ({
     role: msg.role === 'assistant' ? 'model' : 'user',
     parts: [{ text: msg.content }],
   }));
+
+  // Gemini history must start with a user message
+  // Skip all leading model messages
+  let startIndex = 0;
+  while (startIndex < fullHistory.length && fullHistory[startIndex].role === 'model') {
+    startIndex++;
+  }
+  const chatHistory = fullHistory.slice(startIndex);
 
   try {
     const chat = model.startChat({ history: chatHistory as any });
